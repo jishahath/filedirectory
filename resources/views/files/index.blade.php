@@ -22,7 +22,16 @@
     <div class="container-fluid">
         <p>
             <a href="{{route('files.create') }}" class="btn btn-primary">Add New Files</a>
-        </p>
+
+            <form method="get" action="">
+                <div class="input-group mb-3" style="position:absolute; right:-920px; top:150px;">
+                    <input class="form-control col-sm-3 float-right" type=text name=search placeholder="Search">
+                    <div class="input-group-append">
+                        <span><button type="submit" class="input-group-text">Search</span></button>
+                    </div>
+                </div>
+            </form>
+        </p>    
 
         <table class="table table-bordered table-stripped">
             <tr>

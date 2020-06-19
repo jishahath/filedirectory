@@ -14,7 +14,9 @@ class FilesController extends Controller
      */
     public function index()
     {
-        $arr['files'] = File::paginate(5);
+        $arr['files'] = File::when(request('search'), function($q, $search){
+            return $q->where('name', 'like', "%$search%");
+        })->paginate(5);
         return view('files.index')->with($arr);
     }
 
