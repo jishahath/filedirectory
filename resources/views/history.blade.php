@@ -6,26 +6,24 @@
     <div class="container-fluid">
     <div class="row mb-2">
         <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Files</h1>
+        <h1 class="m-0 text-dark">History</h1>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{route('home') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ url('history') }}">History</a></li>
-                <li class="breadcrumb-item active">Files</li>
+                <li class="breadcrumb-item"><a href="{{ url('files') }}">Files</a></li>
+                <li class="breadcrumb-item active">History</li>
             </ol>
-        </div>
+        </div><br>
     </div>
     </div>
 </div>
-
+<br>
 <section class="content">
     <div class="container-fluid">
         <p>
-            <a href="{{route('files.create') }}" class="btn btn-primary">Add New Files</a>
-
             <form method="get" action="">
-                <div class="input-group mb-3" style="position:absolute; right:-920px; top:150px;">
+                <div class="input-group mb-3" style="position:absolute; right:-920px; top:130px;">
                     <input class="form-control col-sm-3 float-right" type=text name=search placeholder="Search">
                     <div class="input-group-append">
                         <span><button type="submit" class="input-group-text">Search</span></button>
@@ -39,6 +37,8 @@
                 <th>ID</th>
                 <th>Title</th>
                 <th>Name</th>
+                <th>Created_at</th>
+                <th>Deleted_at</th>
                 <th>Action</th>
             </tr>
             @if(count($files))
@@ -47,6 +47,8 @@
                     <td>{{$f->id}}</td>
                     <td>{{$f->title}}</td>
                     <td>{{$f->name}}</td>
+                    <td>{{$f->created_at}}</td>
+                    <td>{{$f->deleted_at}}</td>
                     <td> 
                     <form method="POST" action="{{ route('files.destroy', [$f->id]) }}">
                         {{ csrf_field() }}

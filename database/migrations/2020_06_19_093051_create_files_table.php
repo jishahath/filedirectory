@@ -17,6 +17,7 @@ class CreateFilesTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('name')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

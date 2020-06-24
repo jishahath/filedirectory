@@ -97,9 +97,19 @@ class FilesController extends Controller
      */
     public function destroy($id)
     {
-        $file = File::findOrFail($id);
-        $file->delete();
-
+        $file = File::find($id)->delete();
         return redirect('/files');
     }
+
+    public function history()
+    {
+        $arr['files'] = File::when(request('search'), function($q, $search){
+            return $q->where('name', 'like', "%$search%");
+        })->withTrashed()->paginate(5);
+       
+        return view('history')->with($arr);
+
+        
+    }
+
 }
